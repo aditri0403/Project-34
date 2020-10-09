@@ -1,4 +1,4 @@
-var dog,happydog,database,foodS,foodstock;
+var dog,happydog,database,foodS,foodstock,food;
 
 function preload()
 {
@@ -7,10 +7,10 @@ function preload()
 }
 
 function setup() {
-	createCanvas(500, 500);
   database = firebase.database;
-
-  foodstock = database.ref('food');
+  createCanvas(500, 500);
+  food = createSprite(250,250,10,10);
+  foodstock = database.ref('food/position');
   foodstock.on("value",readstock);
   dog = addImage(vpetimg1);
 
@@ -36,6 +36,8 @@ function writeStock(x){
 }
 function readstock(data){
   foodS = data.val();
+  food.x = position.x;
+  food.y = position.y;
 }
 
 

@@ -7,7 +7,7 @@ function preload()
 }
 
 function setup() {
-  database = firebase.database;
+  database = firebase.database();
   createCanvas(500, 500);
   food = createSprite(250,250,10,10);
   foodstock = database.ref('food/position');
